@@ -1,58 +1,60 @@
+import { Link, NavLink } from "react-router-dom";
+import logo from '../assets/logo1.png'
+import { useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { IoMdMenu } from "react-icons/io";
+
 const Navbar = () => {
-    return (
-        <div className="navbar bg-base-100">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
+  const [open, setOpen] = useState(false);
+
+  const links = (
+    <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/a">Queries</NavLink>
+      <NavLink to="/c">Recommendations For Me</NavLink>
+      <NavLink to="/d">My Queries</NavLink>
+      <NavLink to="/d">My recommendations</NavLink>
     </div>
-    <a className="btn btn-ghost text-xl">QueryMate</a>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
-  </div>
-</div>
-    );
+  );
+  return (
+    <div className="navbar w-full mx-auto md:px-10 py-2 ">
+      <div className="navbar-start">
+      <div className="dropdown">
+          <div
+            tabIndex={0}
+            onClick={() => setOpen(!open)}
+            className="btn btn-sm !px-1.5 text-xl lg:hidden "
+          >
+            {open === true ? <IoCloseSharp /> : <IoMdMenu />}
+          </div>
+          {open && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100  font-semibold text-black rounded-box z-[50] mt-3 w-52 p-5 shadow"
+            >
+              {links}
+            </ul>
+          )}
+        </div>
+        <Link to='/'>
+         <div className="flex gap-.5 items-center">
+          <img className="sm:w-10 sm:h-10 w-8 h-8 ml-1 rounded-full" src={logo} alt="" />
+          <a className="font-bold ml-2 text-2xl text-[#09b850]">QueryMate</a>
+         </div>
+        </Link>
+      </div>
+
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      <div className="navbar-end">
+        <Link to="/auth/login" className="btn btn-sm font-semibold ml-3">
+          Login
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

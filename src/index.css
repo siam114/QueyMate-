@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active{
+    text-decoration: underline;
+    color: #09b850;
+}
+html{
+    overflow-x: hidden;
+}
