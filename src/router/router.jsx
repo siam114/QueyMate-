@@ -5,8 +5,8 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../page/Home";
 import ErrorPage from "../page/ErrorPage";
 import Register from "../page/Register";
-import AuthProvider from "../layout/AuthProvider";
 import LogIn from "../page/LogIn";
+import AuthLayout from "../layout/AuthLayout";
 
   const router = createBrowserRouter([
     {
@@ -22,7 +22,7 @@ import LogIn from "../page/LogIn";
     },
     {
       path: '/auth',
-      element: <AuthProvider/>,
+      element: <AuthLayout/>,
       errorElement: <ErrorPage/>,
       children: [
         {
