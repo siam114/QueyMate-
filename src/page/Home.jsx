@@ -1,9 +1,30 @@
+import { useEffect, useState } from "react";
+import BannerSlider from "../component/BannerSlider";
+import axios from "axios";
+import QueryCard from "./QueryCard";
+
 const Home = () => {
-    return (
-        <div>
-            <h2>this is home page</h2>
-        </div>
+  const [queries, setQueries] = useState([]);
+
+  useEffect(() => {
+    fetchAllQueries();
+  }, []);
+  const fetchAllQueries = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/queries-home`
     );
+    setQueries(data);
+  };
+  return (
+    <div>
+      <BannerSlider />
+      <div className="grid  max-w-6xl grid-cols-1 gap-5 my-10 sm:my-16 md:grid-cols-2 lg:grid-cols-3 container mx-auto">
+        {queries.map((query) => (
+          <QueryCard key={query._id} query={query} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Home;

@@ -10,12 +10,11 @@ import { Tooltip as ReactTooltip } from 'react-tooltip';
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  console.log(user)
 
   const links = (
     <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/a">Queries</NavLink>
+      <NavLink to="/all-queries">Queries</NavLink>
       <NavLink to="/c">Recommendations For Me</NavLink>
       <NavLink to="/d">My Queries</NavLink>
       <NavLink to="/d">My recommendations</NavLink>
@@ -24,7 +23,7 @@ const Navbar = () => {
   const links1 =(
     <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/a">Queries</NavLink>
+        <NavLink to="/all-queries">Queries</NavLink>
     </div>
   )
   return (

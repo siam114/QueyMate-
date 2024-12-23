@@ -7,6 +7,8 @@ import ErrorPage from "../page/ErrorPage";
 import Register from "../page/Register";
 import LogIn from "../page/LogIn";
 import AuthLayout from "../layout/AuthLayout";
+import AddQueries from "../page/AddQueries";
+import AllQueries from "../page/AllQueries";
 
   const router = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ import AuthLayout from "../layout/AuthLayout";
         {
             path: '/',
             element: <Home/>
+        },
+        {
+          path: '/add-queries',
+          element: <AddQueries/>
+        },
+        {
+          path: '/all-queries',
+          element: <AllQueries/>
         }
       ]
     },
