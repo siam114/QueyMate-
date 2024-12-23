@@ -9,6 +9,8 @@ import LogIn from "../page/LogIn";
 import AuthLayout from "../layout/AuthLayout";
 import AddQueries from "../page/AddQueries";
 import AllQueries from "../page/AllQueries";
+import MyQueries from "../component/MyQueries";
+import UpdateQueries from "../page/UpdateQueries";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +29,14 @@ import AllQueries from "../page/AllQueries";
         {
           path: '/all-queries',
           element: <AllQueries/>
+        },
+        {
+          path: '/my-queries',
+          element: <MyQueries/>
+        },
+        {
+          path: '/update/:id',
+          element: <UpdateQueries/>
         }
       ]
     },

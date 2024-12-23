@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import PropTypes from 'prop-types';
 
 const QueryCard = ({query}) => {
@@ -33,9 +34,9 @@ const QueryCard = ({query}) => {
             {/* Recommendation Count */}
             <p className="mt-3 text-gray-600">
               Recommendations:{" "}
-              <span className="font-semibold text-blue-600">{count}</span>
+              <span className="font-semibold">{count}</span>
             </p>
-            <p>Date: {date}</p>
+            <p>Date: {format(new Date(date),'P')}</p>
           </div>
   
           {/* Recommend Button */}

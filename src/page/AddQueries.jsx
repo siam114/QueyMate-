@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "./../context/AuthProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -27,9 +30,16 @@ const AddQueries = () => {
       count: 0,
     };
     
-    // make a post request
-    const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/add-query`,formData)
-    console.log(data)
+ try{
+     // make a post request
+    await axios.post(`${import.meta.env.VITE_API_URL}/add-query`,formData)
+    form.reset()
+    toast.success('Data Added SuccessFully')
+    navigate('/my-queries')
+ }catch(err){
+  toast.error(err.message)
+ }
+
 
   };
   return (
