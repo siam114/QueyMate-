@@ -22,7 +22,7 @@ const MyQueryCard = ({ query,fetchAllQueries }) => {
       {/* Image */}
       <figure>
         <img
-          className="p-4 rounded-lg w-full"
+          className="p-4 w-full h-56"
           src={query.productPhoto}
           alt={query.productName}
         />
