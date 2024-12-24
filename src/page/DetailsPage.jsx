@@ -134,6 +134,7 @@ const DetailsPage = () => {
                             <input
                                 type="text"
                                 name="recommand_title"
+                                required
                                 className="w-full px-4 py-2 border rounded-md"
                                 placeholder="Enter recommendation title"
                             />
@@ -145,6 +146,7 @@ const DetailsPage = () => {
                             <input
                                 type="text"
                                 name="recommand_name"
+                                required
                                 className="w-full px-4 py-2 border rounded-md"
                                 placeholder="Enter product name"
                             />
@@ -154,7 +156,8 @@ const DetailsPage = () => {
                                 Product Image URL
                             </label>
                             <input
-                                type="text"
+                                type="url"
+                                required
                                 name="recommand_photo"
                                 className="w-full px-4 py-2 border rounded-md"
                                 placeholder="Enter product image URL"
@@ -167,6 +170,7 @@ const DetailsPage = () => {
                             <textarea
                                 className="w-full px-4 py-2 border rounded-md"
                                 name="recommand_reason"
+                                required
                                 placeholder="Enter reason for recommendation"
                             ></textarea>
                         </div>
