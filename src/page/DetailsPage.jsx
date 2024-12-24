@@ -208,7 +208,7 @@ const DetailsPage = () => {
                         </div>
                     ))
                 ) : (
-                    <p className="text-gray-600">No recommendations yet.</p>
+                    <p className="text-gray-600 text-2xl">No recommendations yet.</p>
                 )}
             </div>
         </div>
