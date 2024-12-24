@@ -12,6 +12,8 @@ import AllQueries from "../page/AllQueries";
 import MyQueries from "../component/MyQueries";
 import UpdateQueries from "../page/UpdateQueries";
 import DetailsPage from "../page/DetailsPage";
+import MyRecommand from "../component/MyRecommand";
+import RecommendationMe from "../component/RecommendationMe";
 
   const router = createBrowserRouter([
     {
@@ -42,6 +44,14 @@ import DetailsPage from "../page/DetailsPage";
         {
           path: '/query/:id',
           element: <DetailsPage/>
+        },
+        {
+          path: '/my-recommandation',
+          element: <MyRecommand/>
+        },
+        {
+          path: '/recommandation-me',
+          element: <RecommendationMe/>
         }
       ]
     },
