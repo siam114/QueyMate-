@@ -11,6 +11,7 @@ import AddQueries from "../page/AddQueries";
 import AllQueries from "../page/AllQueries";
 import MyQueries from "../component/MyQueries";
 import UpdateQueries from "../page/UpdateQueries";
+import DetailsPage from "../page/DetailsPage";
 
   const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ import UpdateQueries from "../page/UpdateQueries";
         {
           path: '/update/:id',
           element: <UpdateQueries/>
+        },
+        {
+          path: '/query/:id',
+          element: <DetailsPage/>
         }
       ]
     },

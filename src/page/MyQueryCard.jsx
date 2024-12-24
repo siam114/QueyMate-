@@ -40,11 +40,13 @@ const MyQueryCard = ({ query,fetchAllQueries }) => {
 
         {/* Buttons */}
         <div className="card-actions justify-end mt-4 flex space-x-2">
-          <button
+         <Link to={`/query/${query._id}`}>
+         <button
             className="px-4 py-2 rounded-md border border-black text-black hover:bg-black hover:text-white transition duration-300"
           >
             View
           </button>
+         </Link>
           <Link to={`/update/${query._id}`}>
           <button
             className="px-4 py-2 rounded-md border border-[#09b850] text-[#09b850] hover:bg-[#09b850] hover:text-white transition duration-300"

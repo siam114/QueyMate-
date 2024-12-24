@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const QueryCard = ({query}) => {
     const{
@@ -9,7 +10,8 @@ const QueryCard = ({query}) => {
         title,
         boycott,
         date,
-        count
+        count,
+        _id
       } = query
     return (
         <div className="flex justify-center items-center">
@@ -28,7 +30,7 @@ const QueryCard = ({query}) => {
             </h2>
             <p className="text-gray-500 mt-1">Brand: {brand}</p>
             <p className="text-gray-700 mt-2 text-sm">
-              {boycott}
+              {boycott.substring(0,70)}...
             </p>
   
             {/* Recommendation Count */}
@@ -41,9 +43,11 @@ const QueryCard = ({query}) => {
   
           {/* Recommend Button */}
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300">
-            <button className="transform scale-0 group-hover:scale-100 transition duration-300 bg-[#09b850] text-white py-2 px-4 rounded-md hover:bg-[#09b850] shadow-lg">
+           <Link to={`/query/${_id}`}>
+              <button className="transform scale-0 group-hover:scale-100 transition duration-300 bg-[#09b850] text-white py-2 px-4 rounded-md hover:bg-[#09b850] shadow-lg">
               Recommend
-            </button>
+             </button>
+           </Link>
           </div>
         </div>
       </div>
