@@ -3,26 +3,120 @@ import { AuthContext } from "../context/AuthProvider";
 import axios from "axios";
 
 const MyRecommand = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    const [queries, setQueries] = useState([]);
-  
-    useEffect(() => {
-      fetchAllQueries();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [user]);
-  
-    // Fetch all recommendations
-    const fetchAllQueries = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/recommand/${user?.email}`
-      );
-      setQueries(data);
-    };
-    console.log(queries)
+  const [queries, setQueries] = useState([]);
+
+  useEffect(() => {
+    fetchAllQueries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  // Fetch all recommendations
+  const fetchAllQueries = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API_URL}/recommand-request/${user?.email}`
+    );
+    setQueries(data);
+  };
 
   return (
-   <div></div>
+    <section className="container px-4 mx-auto my-12">
+      <div className="flex items-center gap-x-3">
+        <h2 className="text-lg font-medium text-gray-800">
+          My Recommendations
+        </h2>
+
+        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full">
+          {queries.length} Recommendation
+        </span>
+      </div>
+
+      <div className="flex flex-col mt-6">
+        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="overflow-hidden border border-gray-200 md:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                    >
+                      Title
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                    >
+                      Recommendation Reason
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                    >
+                       Recommendation Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                    >
+                      Created At
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                    >
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {queries.map((query) => (
+                    <tr key={query._id}>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      {query.recommandTitle}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      {query.recommandReason}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      {query.recommandName}
+                      </td>
+                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                      {query.recommandDate}
+                      </td>
+                      <td className="px-4 py-4 text-sm whitespace-nowrap">
+                        <button
+                        // onClick={() => handleDelete(query._id)}
+                          title="Delete Recommendation"
+                          className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-5 h-5"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
