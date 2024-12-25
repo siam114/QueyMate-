@@ -13,11 +13,22 @@ const MyQueries = () => {
     fetchAllQueries();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+  
   const fetchAllQueries = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/queries/${user?.email}`
-    );
-    setQueries(data);
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/queries/${user?.email}`
+      );
+
+      // Sort the data by date in descending order (newest first)
+      const sortedData = data.sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
+
+      setQueries(sortedData); // Update the state with sorted data
+    } catch (err) {
+      console.error("Error fetching queries:", err.message);
+    }
   };
 
   return (

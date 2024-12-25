@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import QueryCard from "./QueryCard";
+import { MdOutlineViewHeadline } from "react-icons/md";
+import { HiOutlineViewGrid } from "react-icons/hi";
 
 const AllQueries = () => {
   const [queries, setQueries] = useState([]);
@@ -66,20 +68,24 @@ const AllQueries = () => {
               onClick={() => handleViewChange(4)}
               className={`px-3 py-2 border rounded-lg ${activeButton === 4 ? 'bg-[#09b84d] text-white' : 'text-gray-700 hover:bg-blue-100'}`}
             >
-              4 Cards
+              <MdOutlineViewHeadline />
             </button>
             <button
               onClick={() => handleViewChange(3)}
               className={`px-3 py-2 border rounded-lg ${activeButton === 3 ? 'bg-[#09b84d] text-white' : 'text-gray-700 hover:bg-blue-100'}`}
             >
-              3 Cards
+              <HiOutlineViewGrid />
             </button>
           </div>
         </div>
       </div>
 
       {/* Grid of Queries */}
-      <div className={`grid grid-cols-1 gap-5 my-10 md:grid-cols-2 lg:grid-cols-${viewMode} container mx-auto`}>
+      <div
+        className={`grid grid-cols-1 gap-5 my-10 md:grid-cols-2 ${
+          viewMode === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+        } container mx-auto`}
+      >
         {
           queries.map(query => <QueryCard key={query._id} query={query} />)
         }
