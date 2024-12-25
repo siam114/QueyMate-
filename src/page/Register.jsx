@@ -95,7 +95,6 @@ const Register = () => {
               console.log(error);
           })
           
-          const newUser = {name,email,photo}
         })
         .catch((error) => {
           const errorMessage = error.message;

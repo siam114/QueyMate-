@@ -15,7 +15,7 @@ const RecommendationMe = () => {
     // Fetch all recommendations
     const fetchAllQueries = async () => {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/recommand/${user?.email}`
+        `${import.meta.env.VITE_API_URL}/recommand/${user?.email}`,{withCredentials: true}
       );
       setQueries(data);
     };

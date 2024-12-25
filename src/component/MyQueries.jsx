@@ -17,7 +17,7 @@ const MyQueries = () => {
   const fetchAllQueries = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/queries/${user?.email}`
+        `${import.meta.env.VITE_API_URL}/queries/${user?.email}`,{withCredentials: true}
       );
 
       // Sort the data by date in descending order (newest first)
