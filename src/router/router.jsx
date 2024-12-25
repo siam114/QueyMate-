@@ -15,6 +15,7 @@ import DetailsPage from "../page/DetailsPage";
 import MyRecommand from "../component/MyRecommand";
 import RecommendationMe from "../component/RecommendationMe";
 import PrivateRoute from "../page/PrivateRoute";
+import About from "../page/About";
 
   const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ import PrivateRoute from "../page/PrivateRoute";
         {
           path: '/recommandation-me',
           element: <PrivateRoute><RecommendationMe/></PrivateRoute>
+        },
+        {
+          path: '/about',
+          element: <About/>
         }
       ]
     },

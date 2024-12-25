@@ -32,7 +32,7 @@ const AddQueries = () => {
     
  try{
      // make a post request
-    await axios.post(`${import.meta.env.VITE_API_URL}/add-query`,formData)
+    await axios.post(`${import.meta.env.VITE_API_URL}/add-query`,formData,{withCredentials: true})
     form.reset()
     toast.success('Data Added SuccessFully')
     navigate('/my-queries')

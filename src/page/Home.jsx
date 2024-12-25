@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import BannerSlider from "../component/BannerSlider";
 import axios from "axios";
 import QueryCard from "./QueryCard";
+import Leading from "./Leading";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
   const [queries, setQueries] = useState([]);
@@ -23,6 +25,9 @@ const Home = () => {
           <QueryCard key={query._id} query={query} />
         ))}
       </div>
+      <Fade direction="right" duration={2000}>
+        <Leading />
+        </Fade>
     </div>
   );
 };

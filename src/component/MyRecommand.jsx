@@ -15,7 +15,8 @@ const MyRecommand = () => {
   // Fetch all recommendations
   const fetchAllQueries = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/recommand-request/${user?.email}`,{withCredentials: true}
+      `${import.meta.env.VITE_API_URL}/recommand-request/${user?.email}`,
+      { withCredentials: true }
     );
     setQueries(data);
   };
@@ -32,90 +33,100 @@ const MyRecommand = () => {
         </span>
       </div>
 
-      <div className="flex flex-col mt-6">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden border border-gray-200 md:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Title
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Recommendation Reason
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                       Recommendation Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Created At
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {queries.map((query) => (
-                    <tr key={query._id}>
-                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                      {query.recommandTitle}
-                      </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                      {query.recommandReason}
-                      </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                      {query.recommandName}
-                      </td>
-                      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                      {query.recommandDate}
-                      </td>
-                      <td className="px-4 py-4 text-sm whitespace-nowrap">
-                        <button
-                        // onClick={() => handleDelete(query._id)}
-                          title="Delete Recommendation"
-                          className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-5 h-5"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M6 18L18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
-                      </td>
+      {queries.length === 0 ? (
+        // Show message if no recommendations are available
+        <div className="mt-6 text-center">
+          <p className="text-lg text-gray-600">No Recommendations Available</p>
+          <p className="text-sm text-gray-500">
+            Recommendations made by others for your queries will appear here.
+          </p>
+        </div>
+      ) : (
+        // Show table if recommendations exist
+        <div className="flex flex-col mt-6">
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden border border-gray-200 md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Title
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Recommendation Reason
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Recommendation Name
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Created At
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+                      >
+                        Actions
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {queries.map((query) => (
+                      <tr key={query._id}>
+                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                          {query.recommandTitle}
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                          {query.recommandReason}
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                          {query.recommandName}
+                        </td>
+                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                          {query.recommandDate}
+                        </td>
+                        <td className="px-4 py-4 text-sm whitespace-nowrap">
+                          <button
+                            title="Delete Recommendation"
+                            className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="w-5 h-5"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
