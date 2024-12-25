@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import axios from "axios";
+import { format } from "date-fns";
 
 const RecommendationMe = () => {
   const { user } = useContext(AuthContext);
-
   const [queries, setQueries] = useState([]);
 
   useEffect(() => {
@@ -42,70 +42,110 @@ const RecommendationMe = () => {
           </p>
         </div>
       ) : (
-        // Show table if recommendations exist
+        
         <div className="flex flex-col mt-6">
+          {/* Desktop Table */}
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden border border-gray-200 md:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        Title
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        Recommendation Reason
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        Recommendation Name
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        Created At
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                      >
-                        Recommendation Email
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {queries.map((query) => (
-                      <tr key={query._id}>
-                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          {query.recommandTitle}
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          {query.recommandReason}
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          {query.recommandName}
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                          {query.recommandDate}
-                        </td>
-                        <td className="px-4 py-4 text-sm whitespace-nowrap">
-                          {query.recommandEmail}
-                        </td>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 hidden md:table">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="py-3.5 px-4 text-sm font-normal text-left text-gray-500"
+                        >
+                          Title
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left text-gray-500"
+                        >
+                          Recommendation Reason
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left text-gray-500"
+                        >
+                          Recommendation Name
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left text-gray-500"
+                        >
+                          Created At
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3.5 text-sm font-normal text-left text-gray-500"
+                        >
+                          Recommendation Email
+                        </th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {queries.map((query) => (
+                        <tr key={query._id}>
+                          <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            {query.recommandTitle}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            {query.recommandReason}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                            {query.recommandName}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                          {format(new Date(query.recommandDate), "P")}
+                          </td>
+                          <td className="px-4 py-4 text-sm whitespace-nowrap">
+                            {query.recommandEmail}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className="md:hidden mt-5">
+            {queries.map((query) => (
+              <div
+                key={query._id}
+                className="p-4 mb-4 bg-white border rounded-lg shadow-sm"
+              >
+                <div className="text-sm text-gray-500">
+                  <span className="font-bold text-gray-700">Title: </span>
+                  {query.recommandTitle}
+                </div>
+                <div className="mt-2 text-sm text-gray-500">
+                  <span className="font-bold text-gray-700">
+                    Recommendation Reason:{" "}
+                  </span>
+                  {query.recommandReason}
+                </div>
+                <div className="mt-2 text-sm text-gray-500">
+                  <span className="font-bold text-gray-700">
+                    Recommendation Name:{" "}
+                  </span>
+                  {query.recommandName}
+                </div>
+                <div className="mt-2 text-sm text-gray-500">
+                  <span className="font-bold text-gray-700">Created At: </span>
+                  {format(new Date(query.recommandDate), "P")}
+                </div>
+                <div className="mt-2 text-sm text-gray-500">
+                  <span className="font-bold text-gray-700">
+                    Recommendation Email:{" "}
+                  </span>
+                  {query.recommandEmail}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
