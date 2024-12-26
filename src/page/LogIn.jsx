@@ -59,7 +59,7 @@ const LogIn = () => {
   }, [user]);
   return (
     <div className="flex items-center justify-center flex-col lg:flex-row">
-      <div className="text-center lg:text-left w-[500px] sm:ml-44 px-5">
+      <div className="text-center lg:text-left sm:w-[500px] w-[300px] sm:ml-44 px-5">
         <Lottie animationData={loginLottieData}></Lottie>
       </div>
 
