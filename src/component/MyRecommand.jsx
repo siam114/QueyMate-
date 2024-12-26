@@ -113,7 +113,7 @@ const MyRecommand = () => {
                             {query.recommandTitle}
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                            {query.recommandReason}
+                            {query.recommandReason.substring(0,40)}...
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                             {query.recommandName}
