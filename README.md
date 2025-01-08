@@ -22,3 +22,31 @@ QueyMate is a dynamic and user-friendly web application designed to [briefly des
 - **React Bootstrap**: For responsive design and pre-built UI components.
 - **Moment.js**: For date manipulation and formatting.
 - **React-Icons**: To incorporate custom icons for UI elements.
+
+## Dependencies
+
+- `react`: Core library for building user interfaces.  
+- `react-dom`: React's DOM renderer.  
+- `vite`: Next-generation frontend tooling for lightning-fast builds.  
+- `tailwindcss`: Utility-first CSS framework for styling.  
+
+Other relevant dependencies can be checked in the `package.json` file.
+
+---
+
+## How to Run Locally
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/sportaxis.git
+   cd sportaxis
+2. **Install dependencies:**:
+   ```bash
+   npm install
+3. **Start the development server:**:
+   ```bash
+   npm run dev 
+2. **To build for production::**:
+   ```bash
+   npm run build
+   
