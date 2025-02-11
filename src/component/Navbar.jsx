@@ -24,6 +24,7 @@ const Navbar = () => {
     <div className="flex flex-col md:flex-row gap-2 md:gap-5 font-semibold">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/all-queries">Queries</NavLink>
+        <NavLink to='/about'>About Us</NavLink>
     </div>
   )
   return (
