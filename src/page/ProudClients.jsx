@@ -33,7 +33,7 @@ const ProudClients = () => {
     return (
         <>
             {/* Section Title */}
-            {/* <h2 className="text-3xl font-bold text-center mb-5 mt-10">OUR PROUD CLIENTS</h2> */}
+            <h2 className="text-3xl font-bold text-center mb-5 mt-10">OUR PROUD CLIENTS</h2>
             <div className="slider-container py-20">
                 <Slider {...settings}>
                     <div>
