@@ -16,7 +16,7 @@ import bgimg3 from '../assets/bgimage/image3.jpg'
 
 const BannerSlider = () => {
     return (
-        <div className='container px-6 py-2 mx-auto'>
+        <div className='w-full mx-auto'>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
