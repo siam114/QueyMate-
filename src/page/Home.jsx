@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div>
       <BannerSlider />
-      <div className="grid lg:max-w-7xl grid-cols-1 gap-5 my-10 sm:my-16 md:grid-cols-2 lg:grid-cols-4  mx-auto">
+      <div className="grid lg:max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10 sm:my-16  mx-auto">
         {queries.map((query) => (
           <QueryCard key={query._id} query={query} />
         ))}
