@@ -5,6 +5,7 @@ import QueryCard from "./QueryCard";
 import Leading from "./Leading";
 import { Fade } from "react-awesome-reveal";
 import ProudClients from "./ProudClients";
+import NewsLater from "../component/NewsLater";
 
 const Home = () => {
   const [queries, setQueries] = useState([]);
@@ -30,6 +31,7 @@ const Home = () => {
         <Fade direction="right" duration={2000}>
         <Leading />
         </Fade>
+        <NewsLater/>
     </div>
   );
 };
