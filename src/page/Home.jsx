@@ -7,6 +7,7 @@ import { Fade } from "react-awesome-reveal";
 import ProudClients from "./ProudClients";
 import NewsLater from "../component/NewsLater";
 import { Helmet } from "react-helmet";
+import Faq from "../component/Faq";
 
 const Home = () => {
   const [queries, setQueries] = useState([]);
@@ -35,6 +36,9 @@ const Home = () => {
         <Fade direction="right" duration={2000}>
         <Leading />
         </Fade>
+        <div className="container mx-auto my-10">
+        <Faq />
+      </div>
         <NewsLater/>
     </div>
   );
