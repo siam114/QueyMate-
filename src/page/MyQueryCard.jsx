@@ -1,6 +1,7 @@
 import axios from "axios";
 import { format } from "date-fns";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -19,6 +20,9 @@ const MyQueryCard = ({ query,fetchAllQueries }) => {
 
   return (
     <div className="card bg-base-100 shadow-xl">
+       <Helmet>
+        <title>QueryMate | My Queries</title>
+      </Helmet>
       {/* Image */}
       <figure>
         <img

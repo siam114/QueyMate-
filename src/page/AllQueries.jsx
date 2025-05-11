@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import QueryCard from "./QueryCard";
 import { MdOutlineViewHeadline } from "react-icons/md";
 import { HiOutlineViewGrid } from "react-icons/hi";
+import { Helmet } from "react-helmet";
 
 const AllQueries = () => {
   const [queries, setQueries] = useState([]);
@@ -37,6 +38,9 @@ const AllQueries = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>QueryMate | Queries</title>
+      </Helmet>
       <div className="w-full max-w-4xl mx-auto mt-8 px-4">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">

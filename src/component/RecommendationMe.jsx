@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
+import { Helmet } from "react-helmet";
 
 const RecommendationMe = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +24,9 @@ const RecommendationMe = () => {
 
   return (
     <section className="container px-4 mx-auto my-12">
+       <Helmet>
+        <title>QueryMate | Recommendation</title>
+      </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800">
           Recommendations For Me

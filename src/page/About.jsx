@@ -1,11 +1,15 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet";
 
 AOS.init();
 
 const About = () => {
     return (
       <div>
+         <Helmet>
+        <title>QueryMate | About Us</title>
+      </Helmet>
         <section className="py-12">
           <div className="container mx-auto px-6 text-gray-800">
             <h2 className="text-4xl font-bold text-center mb-8">About Us</h2>

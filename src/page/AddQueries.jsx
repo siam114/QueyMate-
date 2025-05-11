@@ -3,6 +3,7 @@ import { AuthContext } from "./../context/AuthProvider";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const AddQueries = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)] my-12">
+       <Helmet>
+        <title>QueryMate | Add Queries</title>
+      </Helmet>
       <section className="p-4 md:p-8 mx-auto bg-white rounded-lg shadow-lg w-full max-w-4xl">
         <h2 className="text-2xl font-bold text-gray-800 capitalize text-center mb-6">
           Add Your Query
