@@ -6,6 +6,7 @@ import Leading from "./Leading";
 import { Fade } from "react-awesome-reveal";
 import ProudClients from "./ProudClients";
 import NewsLater from "../component/NewsLater";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [queries, setQueries] = useState([]);
@@ -21,6 +22,9 @@ const Home = () => {
   };
   return (
     <div>
+       <Helmet>
+        <title>QueryMate | Home</title>
+      </Helmet>
       <BannerSlider />
       <div className="grid lg:max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-10 sm:my-16  mx-auto">
         {queries.map((query) => (
